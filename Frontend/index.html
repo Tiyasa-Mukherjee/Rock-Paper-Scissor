@@ -142,7 +142,7 @@
                 });
             }
             
-          function updateResultDisplay() {
+            function updateResultDisplay() {
     if (currentResult === 'tie') {
         resultText.textContent = "You Tied!";
         resultText.style.color = "#f39c12";
@@ -153,13 +153,7 @@
         resultText.textContent = "Computer Wins! 🤖";
         resultText.style.color = "#e74c3c";
     }
-
-    // Clear the message after 3 seconds (3000 ms)
-    setTimeout(() => {
-        resultText.textContent = "";
-    }, 3000000000000000000000000000000000000000000000);
 }
-
 
 function resetGame() {
     // Reset hands to default state with animations
