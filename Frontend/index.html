@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Rock Paper Scissors | untoldcoding</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <pre>
+        <h1 style="font-weight: bold; padding: 20px; color: black; background-color: bisque; border: 3px solid rgb(188, 170, 148); border-radius: 20px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Rock Paper Scissor</h1>
+        </pre>
+        
+        <div id="game-container">
+            <div id="hands">
+                <div class="hand" id="computer-hand">
+                    <div class="fist"></div>
+                    <div class="finger finger-1"></div>
+                    <div class="finger finger-2"></div>
+                    <div class="finger finger-3"></div>
+                    <div class="finger finger-4"></div>
+                    <div class="thumb"></div>
+                    <div class="arm"></div>
+                </div>
+
+                <div class="hand" id="user-hand">
+                    <div class="fist"></div>
+                    <div class="finger finger-1"></div>
+                    <div class="finger finger-2"></div>
+                    <div class="finger finger-3"></div>
+                    <div class="finger finger-4"></div>
+                    <div class="thumb"></div>
+                    <div class="arm"></div>
+                </div>
+            </div>
+
+            <div id="controls">
+                <button class="choice-btn" data-choice="rock">
+                    <img src="images/fist.png" alt="Rock" width="30px" height="30px">
+                </button>
+                <button class="choice-btn" data-choice="paper">
+                    <img src="images/hello.png" alt="Paper" width="30px" height="30px">
+                </button>
+                <button class="choice-btn" data-choice="scissors">
+                    <img src="images/no.png" alt="Scissor" width="30px" height="30px">
+                </button>
+            </div>
+
+            <div id="text">
+                <h2></h2>
+                <button id="reset-btn" class="untoldcoding">Refresh This Round</button>
+            </div>
+        </div>
+        
+        <div id="history-container">
+            <h3>Match History</h3>
+            <div id="history-list"></div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const choiceButtons = document.querySelectorAll('.choice-btn');
+            const resetButton = document.getElementById('reset-btn');
+            const resultText = document.querySelector('#text h2');
+            const historyList = document.getElementById('history-list');
+            const computerHand = document.getElementById('computer-hand');
+            const userHand = document.getElementById('user-hand');
+            
+            // Track game state
+            let isPlaying = false;
+            let currentResult = null;
+            
+            // Load history on page load
+            fetchHistory();
+            
+            // Add event listeners to choice buttons
+            choiceButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (isPlaying) return;
+                    
+                    const choice = this.dataset.choice;
+                    playRound(choice);
+                });
+            });
+            
+            // Reset button functionality
+            resetButton.addEventListener('click', function() {
+                resetGame();
+            });
+            
+            function playRound(userChoice) {
+                isPlaying = true;
+                
+                // Disable buttons during play
+                choiceButtons.forEach(btn => btn.disabled = true);
+                resetButton.disabled = true;
+                
+                // Send choice to backend
+                fetch('http://localhost:5000/play', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ choice: userChoice })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Update computer hand based on its choice
+                    computerHand.className = `hand ${data.computer_choice}`;
+                    computerHand.style.animation = 'none';
+                    
+                    // Update user hand
+                    userHand.className = `hand ${userChoice}`;
+                    userHand.style.animation = 'none';
+                    
+                    // Display result
+                    currentResult = data.result;
+                    updateResultDisplay();
+                    
+                    // Update history
+                    fetchHistory();
+                    
+                    // Enable reset button only
+                    resetButton.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    resultText.textContent = 'Error: ' + error.message;
+                    resultText.style.color = "#e74c3c";
+                    
+                    // Enable buttons for retry
+                    choiceButtons.forEach(btn => btn.disabled = false);
+                    resetButton.disabled = false;
+                    isPlaying = false;
+                });
+            }
+            
+          function updateResultDisplay() {
+    if (currentResult === 'tie') {
+        resultText.textContent = "You Tied!";
+        resultText.style.color = "#f39c12";
+    } else if (currentResult === 'win') {
+        resultText.textContent = "You Win! 🎉";
+        resultText.style.color = "#27ae60";
+    } else {
+        resultText.textContent = "Computer Wins! 🤖";
+        resultText.style.color = "#e74c3c";
+    }
+
+    // Clear the message after 3 seconds (3000 ms)
+    setTimeout(() => {
+        resultText.textContent = "";
+    }, 3000000000000000000000000000000000000000000000);
+}
+
+
+function resetGame() {
+    // Reset hands to default state with animations
+    computerHand.className = 'hand';
+    computerHand.style.animation = 'handShake 2s infinite';
+    userHand.className = 'hand';
+    userHand.style.animation = 'handShake2 2s infinite';
+    
+    // Clear result text
+    resultText.textContent = '';
+    resultText.style.color = '';
+    currentResult = null;
+    
+    // Re-enable choice buttons
+    choiceButtons.forEach(btn => btn.disabled = false);
+    resetButton.disabled = false;
+    
+    isPlaying = false;
+}
+
+            function fetchHistory() {
+                fetch('http://localhost:5000/history')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(history => {
+                        if (history.length === 0) {
+                            historyList.innerHTML = '<p>No matches played yet</p>';
+                            return;
+                        }
+                        
+                        // Sort by most recent first
+                        const sortedHistory = [...history].reverse();
+                        
+                        let html = '<ul>';
+                        sortedHistory.forEach(match => {
+                            const date = new Date(match.timestamp).toLocaleString();
+                            const resultClass = match.result === 'win' ? 'win' : 
+                                              match.result === 'lose' ? 'lose' : 'tie';
+                            
+                            html += `
+                                <li class="${resultClass}">
+                                    ${date} - 
+                                    You: ${match.user_choice}, 
+                                    Computer: ${match.computer_choice} 
+                                    (${match.result})
+                                </li>
+                            `;
+                        });
+                        html += '</ul>';
+                        
+                        historyList.innerHTML = html;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching history:', error);
+                        historyList.innerHTML = '<p>Error loading history</p>';
+                    });
+            }
+        });
+    </script>
+</body>
+</html>

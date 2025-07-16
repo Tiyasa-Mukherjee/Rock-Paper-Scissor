@@ -1,0 +1,188 @@
+[
+  {
+    "timestamp": "2025-07-16T22:34:49.360864",
+    "user_choice": "rock",
+    "computer_choice": "paper",
+    "result": "lose"
+  },
+  {
+    "timestamp": "2025-07-16T22:34:50.525910",
+    "user_choice": "rock",
+    "computer_choice": "rock",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T22:34:51.400703",
+    "user_choice": "rock",
+    "computer_choice": "rock",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T22:34:52.215039",
+    "user_choice": "rock",
+    "computer_choice": "rock",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T22:34:53.400075",
+    "user_choice": "paper",
+    "computer_choice": "rock",
+    "result": "win"
+  },
+  {
+    "timestamp": "2025-07-16T22:34:55.348749",
+    "user_choice": "scissors",
+    "computer_choice": "rock",
+    "result": "lose"
+  },
+  {
+    "timestamp": "2025-07-16T22:35:08.021663",
+    "user_choice": "paper",
+    "computer_choice": "rock",
+    "result": "win"
+  },
+  {
+    "timestamp": "2025-07-16T22:35:09.598670",
+    "user_choice": "scissors",
+    "computer_choice": "rock",
+    "result": "lose"
+  },
+  {
+    "timestamp": "2025-07-16T22:35:10.999069",
+    "user_choice": "paper",
+    "computer_choice": "paper",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T22:50:57.203540",
+    "user_choice": "rock",
+    "computer_choice": "rock",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T22:50:58.435503",
+    "user_choice": "paper",
+    "computer_choice": "paper",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T22:50:59.629150",
+    "user_choice": "scissors",
+    "computer_choice": "scissors",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T22:51:40.517199",
+    "user_choice": "rock",
+    "computer_choice": "rock",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T22:51:42.074660",
+    "user_choice": "paper",
+    "computer_choice": "paper",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T22:51:43.441167",
+    "user_choice": "scissors",
+    "computer_choice": "rock",
+    "result": "lose"
+  },
+  {
+    "timestamp": "2025-07-16T22:51:48.502075",
+    "user_choice": "scissors",
+    "computer_choice": "paper",
+    "result": "win"
+  },
+  {
+    "timestamp": "2025-07-16T22:58:17.409028",
+    "user_choice": "rock",
+    "computer_choice": "rock",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T23:03:20.136855",
+    "user_choice": "paper",
+    "computer_choice": "rock",
+    "result": "win"
+  },
+  {
+    "timestamp": "2025-07-16T23:03:21.951463",
+    "user_choice": "paper",
+    "computer_choice": "rock",
+    "result": "win"
+  },
+  {
+    "timestamp": "2025-07-16T23:03:23.013764",
+    "user_choice": "paper",
+    "computer_choice": "scissors",
+    "result": "lose"
+  },
+  {
+    "timestamp": "2025-07-16T23:03:24.000281",
+    "user_choice": "paper",
+    "computer_choice": "paper",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T23:03:25.305641",
+    "user_choice": "scissors",
+    "computer_choice": "rock",
+    "result": "lose"
+  },
+  {
+    "timestamp": "2025-07-16T23:03:26.994490",
+    "user_choice": "rock",
+    "computer_choice": "scissors",
+    "result": "win"
+  },
+  {
+    "timestamp": "2025-07-16T23:05:18.594198",
+    "user_choice": "rock",
+    "computer_choice": "rock",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T23:08:20.280256",
+    "user_choice": "paper",
+    "computer_choice": "paper",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T23:10:34.816486",
+    "user_choice": "rock",
+    "computer_choice": "paper",
+    "result": "lose"
+  },
+  {
+    "timestamp": "2025-07-16T23:10:45.245843",
+    "user_choice": "paper",
+    "computer_choice": "paper",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T23:14:22.373248",
+    "user_choice": "scissors",
+    "computer_choice": "scissors",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T23:14:23.496614",
+    "user_choice": "scissors",
+    "computer_choice": "scissors",
+    "result": "tie"
+  },
+  {
+    "timestamp": "2025-07-16T23:14:24.460770",
+    "user_choice": "scissors",
+    "computer_choice": "rock",
+    "result": "lose"
+  },
+  {
+    "timestamp": "2025-07-16T23:14:25.466323",
+    "user_choice": "scissors",
+    "computer_choice": "paper",
+    "result": "win"
+  }
+]
